@@ -48,5 +48,4 @@ public class MinimumAndMaximum {
         System.out.printf("\nMaximum element is %d", minmax.max);
 
     }
-
 }
