@@ -39,13 +39,68 @@ public class MinimumAndMaximum {
         return minmax;
     }
 
+
+
+
+    static Pair Method2(int [] arr, int low,int high) {
+        Pair minmax = new Pair();
+        Pair mml = new Pair();
+        Pair mmr = new Pair();
+        int mid;
+
+        //if only one element present
+        if (low == high) {
+            minmax.max = arr[low];
+            minmax.min = arr[low];
+            return minmax;
+        }
+
+        //if 2 elements are present
+        if (high == low + 1) {
+            if (arr[low] > arr[high]) {
+                minmax.max = arr[low];
+                minmax.min = arr[high];
+            } else {
+                minmax.max = arr[high];
+                minmax.min = arr[low];
+            }
+            return minmax;
+        }
+
+        //if more than two elements
+        mid = (low + high) / 2;
+        mml = Method2(arr, low, mid);
+        mmr = Method2(arr, mid + 1, high);
+
+        //compare min of two parts
+
+        if (mml.min < mmr.min){
+            minmax.min = mml.min;
+     } else {
+            minmax.min = mmr.min;
+        }
+
+        //compare max of the two parts
+        if (mml.max>mmr.max) {
+            minmax.max = mml.max;
+        } else {
+            minmax.max = mmr.max;
+        }
+        return minmax;
+    }
+
+
+
+
     /* Driver program to test above function */
-    public static void main(String []args) {
-        int [] arr = {1000, 11, 445, 1, 330, 3000};
+
+    public static void main(String[] args) {
+        int [] arr = { 1000,11,445,1,330,3000 };
         int arr_size = 6;
-        Pair minmax = Method1(arr, arr_size);
-        System.out.printf("\nMinimum element is %d", minmax.min);
-        System.out.printf("\nMaximum element is %d", minmax.max);
+        Pair minmax = Method2(arr,0,arr_size-1);
+        System.out.printf("The Minimum Element is= %d",minmax.min);
+        System.out.println();
+        System.out.printf("The Maximum Element is= %d",minmax.max);
 
     }
 }
