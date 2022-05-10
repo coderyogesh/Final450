@@ -90,6 +90,49 @@ public class MinimumAndMaximum {
     }
 
 
+    static  Pair Method3(int[] arr,int n) {
+        Pair minmax = new Pair();
+        int i;
+
+        //if array has even number of elements than initialize the first two elements as minimum and maximum
+
+        if (n % 2 == 0) {
+            if (arr[0] > arr[1] ) {
+                minmax.max = arr[0];
+                minmax.min = arr[1];
+            }  else {
+                minmax.max = arr[1];
+                minmax.min = arr[0];
+            }
+            i=2;
+        }
+
+        else {
+            minmax.min = arr[0];
+            minmax.max = arr[0];
+            i=1;
+        }
+
+        while( i < n-1) {
+            if (arr[i] >arr[i+1]) {
+                if (arr[i] > minmax.max) {
+                    minmax.max = arr[i];
+                }
+                if (arr[i + 1] < minmax.min) {
+                    minmax.min = arr[i + 1];
+                }
+            } else {
+                    if (arr[i+1] > minmax.max ) {
+                        minmax.max = arr[i+1];
+                    } if (arr[i] < minmax.min) {
+                        minmax.min = arr[i];
+                    }
+                }
+                i += 2;
+            }
+        return minmax;
+
+    }
 
 
     /* Driver program to test above function */
@@ -97,7 +140,7 @@ public class MinimumAndMaximum {
     public static void main(String[] args) {
         int [] arr = { 1000,11,445,1,330,3000 };
         int arr_size = 6;
-        Pair minmax = Method2(arr,0,arr_size-1);
+        Pair minmax = Method3(arr,arr_size);
         System.out.printf("The Minimum Element is= %d",minmax.min);
         System.out.println();
         System.out.printf("The Maximum Element is= %d",minmax.max);
