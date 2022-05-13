@@ -52,11 +52,36 @@ public class MoveNeg {
             System.out.print(arr[i] + " ");
         System.out.println();
     }
+
+    //3rd Approach
+    //Using Dutch National Flag Algorithm
+
+        // a utility function to swap two elements of an array
+        public static void swap(int[] arr, int i, int j)
+        {
+            int t = arr[i];
+            arr[i] = arr[j];
+            arr[j] = t;
+        }
+
+        public static void move(int[] arr)
+        {
+            int low = 0;
+            int high = arr.length - 1;
+            while (low <= high) {
+                if (arr[low] <= 0)
+                    low++;
+                else
+                    swap(arr, low, high--);
+            }
+        }
+
     public static void main(String[] args) {
-        int [] arr = {-1,2,3,4,-5,-6,-7,8,9};
-        int arr_size = arr.length;
-        shiftall(arr,0,arr_size-1);
-        display(arr,arr_size-1);
+        int [] arr = {1, 2, -4, -5, 2, -7, 3,
+                2, -6, -8, -9, 3, 2, 1 };
+        move(arr);
+        for (int e : arr)
+        System.out.print(e + " ");
     }
 }
 
