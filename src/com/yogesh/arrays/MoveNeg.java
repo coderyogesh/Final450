@@ -29,3 +29,4 @@ public class MoveNeg {
         printArray(arr,n);
     }
 }
+
