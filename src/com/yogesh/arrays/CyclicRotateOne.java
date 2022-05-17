@@ -3,7 +3,6 @@ package com.yogesh.arrays;
 public class CyclicRotateOne {
     static void rotate(int[] arr, int n)
     {
-        int lastItem = arr[n-1];
         int previousItem = arr[n-1];
         int swap = 0;
 
