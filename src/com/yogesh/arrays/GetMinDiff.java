@@ -1,7 +1,7 @@
 package com.yogesh.arrays;
 
 import java.util.Arrays;
-
+//
 public class GetMinDiff {
         public static int getMinDiff(int[] arr,int n,int k) {
             Arrays.sort(arr);
@@ -26,4 +26,5 @@ public class GetMinDiff {
         int ans = getMinDiff(arr,arr.length,k);
         System.out.println(ans);
     }
+
 }
